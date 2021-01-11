@@ -1,0 +1,118 @@
+<style>
+  .input_css {
+    float: none;
+    width: 40px;
+    font: bold 20px Helvetica, sans-serif;
+    padding: 3px 0 0 0;
+    text-align: center;
+  }
+
+  .btn-circle.btn-xl {
+    width: 70px;
+    height: 70px;
+    padding: 10px 16px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+
+  .btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+  }
+</style>
+
+<!-- Content Wrapper. Contains page content -->
+
+<!-- Main content -->
+<section class="content">
+  <!-- Default box -->
+  <div class="card card-solid">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-sm-6">
+          <div class="col-12">
+            <img [src]="transform(precio.IMAGEN)"class="img-fluid" alt="Product Image">
+          </div>
+        </div>
+        <div class="col-12 col-sm-6">
+          <h3 class="my-3">{{precio.NOMBRE}}</h3>
+          <p>{{precio.DESCRIPCION}}</p>
+
+          <hr>
+          <small>CATALOGO : {{precio.CATALOGO}}</small>
+          <small> CATEGORIA : {{precio.CATEGORIA}}</small>
+          <hr>
+          <div class="bg-gray py-2 px-3 mt-4">
+            <h2 class="mb-0">
+              MX $ {{precio.PRECIO}}
+            </h2>
+          </div>
+          <hr>
+          <div class="py-2 px-3 mt-4">
+            <div class="form-group">
+              <label for="COMENTARIOS">Comentarios</label>
+              <input type="text" class="form-control" id="COMENTARIOS" [(ngModel)]="COMENTARIOS"
+                aria-describedby="emailHelp">
+              <small id="emailHelp" class="form-text text-muted">Agregar comentarios al pedido.</small>
+            </div>
+          </div>
+          <hr>
+          <div class="py-2 px-3 mt-4">
+            <div class="btn btn-default btn-lg btn-flat">
+              <button type="button" class="btn btn-primary btn-circle" (click)="addOrMinCtd(true)"><i
+                  class="fa fa-plus"></i>
+              </button>
+              <input type="number" class="input_css" [(ngModel)]="CANTIDAD">
+              <button type="button" class="btn btn-primary btn-circle" (click)="addOrMinCtd(false)"><i
+                  class="fa fa-minus"></i>
+              </button>
+            </div>
+
+            <a (click)="addPedido()">
+              <div class="btn btn-primary btn-lg btn-flat">
+                <i class="fas fa-cart-plus fa-lg mr-2"></i>
+                Agregar al pedido
+              </div>
+            </a>
+
+          </div>
+
+          <div class="py-2 px-3 mt-4">
+
+            <div class="btn btn-primary btn-lg btn-flat" (click)="goBack()">
+              <i class="far fa-arrow-alt-circle-left mr-2"></i>
+              Regresar a lista precios
+            </div>
+          </div>
+
+          <div class="mt-4 product-share">
+            <a href="#" class="text-gray">
+              <i class="fab fa-facebook-square fa-2x"></i>
+            </a>
+            <a href="#" class="text-gray">
+              <i class="fab fa-twitter-square fa-2x"></i>
+            </a>
+            <a href="#" class="text-gray">
+              <i class="fas fa-envelope-square fa-2x"></i>
+            </a>
+            <a href="#" class="text-gray">
+              <i class="fas fa-rss-square fa-2x"></i>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+  
+
+</section>
+<!-- /.content -->

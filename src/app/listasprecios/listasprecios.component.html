@@ -1,0 +1,81 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Listas de precios</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Listas</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="listaAdd()">Agregar lista ...</button>
+
+            <div class="card-tools">
+              <form [formGroup]="buscarForm" autocomplete="off">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="search" formControlName="valorBuscar"
+                    class="form-control float-right" placeholder="Buscar...">
+
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-bordered table-striped table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>LISTA</th>
+                  <th>CLIENTE</th>
+                  <th>ESTATUS</th>
+                  <th>Acciones</th>
+                  <th>Materiales y precios</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let lista of listas">
+                  <td (click)="listaDet(lista.IDLISTA)">{{lista.NOMBRE}}</td>
+                  <td (click)="listaDet(lista.IDLISTA)">{{lista.NOMCLIENTE}}</td>
+                  <td (click)="listaDet(lista.IDLISTA)">{{lista.ESTATUS}}</td>
+                  <td>
+                    <button type="button" class="btn btn-outline-info btn-sm" (click)="listaDet(lista.IDLISTA)"><i
+                        class="far fa-edit"></i></button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="listaDel(lista)"><i
+                        class="far fa-trash-alt"></i></button>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-outline-info btn-sm" (click)="preciosVenta(lista.IDLISTA)"><i
+                        class="far fa-edit"></i>Materiales y precios</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->

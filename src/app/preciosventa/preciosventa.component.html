@@ -1,0 +1,90 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Precios venta</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Precios</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<!-- Main content -->
+<section class="content">
+  <div class="container-fluid">
+    <!-- /.row -->
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="precioNew()">Agregar precio ...</button>
+            <button type="button" class="btn btn-outline-info btn-sm" (click)="goBack()">Lista de precios</button>
+
+            <div class="card-tools">
+              <form [formGroup]="buscarForm" autocomplete="off">
+                <div class="input-group input-group-sm" style="width: 150px;">
+                  <input type="search" name="table_search" formControlName="valorBuscar" class="form-control float-right" placeholder="Buscar...">
+
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-default"><i class="fas fa-search"></i></button>
+                  </div>
+                </div>
+              </form>
+
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body table-responsive p-0">
+            <table class="table table-bordered table-striped table-hover text-nowrap">
+              <thead>
+                <tr>
+                  <th>ARTICULO</th>
+                  <th>CATEGORIA</th>
+                  <th>CATALOGO</th>
+                  <th>NOMBRE</th>
+                  <th>EXISTENCIA</th>
+                  <th>UNIDAD</th>
+                  <th>PRECIO</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let precio of precios">
+                  <td>{{precio.IDARTICULO}}</td>
+                  <td>{{precio.CATEGORIA}}</td>
+                  <td>{{precio.CATALOGO}}</td>
+                  <td>{{precio.NOMBRE}}</td>
+                  <td>{{precio.EXISTENCIA}}</td>
+                  <td>{{precio.UNIDAD}}</td>
+                  <td>
+                    <input type="number" class="form-control" style="width: 100px;" id="PRECIO"
+                      [(ngModel)]="precio.PRECIO" [readonly]="precio.ACCION == 'N'">
+                  </td>
+                  <td>
+                    <button *ngIf="precio.ACCION == 'N'" type="button" class="btn btn-outline-info btn-sm"
+                      (click)="precioVentaEdit(precio)"><i class="far fa-edit"></i></button>
+                    <button *ngIf="precio.ACCION == 'E'" type="button" class="btn btn-outline-info btn-sm"
+                      (click)="precioVentaSave(precio)"><i class="far fa-save"></i></button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" (click)="precioVentaDel(precio)"><i
+                        class="far fa-trash-alt"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+    </div>
+    <!-- /.row -->
+  </div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->

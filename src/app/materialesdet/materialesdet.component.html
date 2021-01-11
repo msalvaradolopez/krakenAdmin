@@ -1,0 +1,159 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Material detalle</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Detalle Material</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+  <div class="container-fluid">
+    <!-- Horizontal Form -->
+    <div class="card card-info">
+      <div class="card-header">
+        <h3 class="card-title">{{titulo}}</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form class="form-horizontal" [formGroup]="validaCaptura" (ngSubmit)="setMaterial()" autocomplete="off">
+        <div class="card-body">
+          <div class="form-group row">
+            <label for="IDARTICULO" class="col-sm-2 col-form-label">Clave</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="IDARTICULO" [class.is-invalid]="validaCampo('IDARTICULO')"
+                formControlName="IDARTICULO">
+              <div *ngIf="validaCampo('IDARTICULO')">
+                <small style="color: red;">{{mensajeErrorCampo('IDARTICULO')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="IDCATEGORIA" class="col-sm-2 col-form-label">Categorías</label>
+            <div class="col-sm-4">
+              <!-- select -->
+              <select class="form-control" id="IDCATEGORIA" [class.is-invalid]="validaCampo('IDCATEGORIA')"
+                formControlName="IDCATEGORIA">
+                <option [value]="item.IDCATEGORIA" *ngFor="let item of catCategorias">{{item.NOMBRE}}</option>
+              </select>
+              <div *ngIf="validaCampo('IDCATEGORIA')">
+                <small style="color: red;">{{mensajeErrorCampo('IDCATEGORIA')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="CATALOGO" class="col-sm-2 col-form-label">Catálogo</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="CATALOGO" [class.is-invalid]="validaCampo('CATALOGO')"
+                formControlName="CATALOGO">
+              <div *ngIf="validaCampo('CATALOGO')">
+                <small style="color: red;">{{mensajeErrorCampo('CATALOGO')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="NOMBRE" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="NOMBRE" [class.is-invalid]="validaCampo('NOMBRE')"
+                formControlName="NOMBRE">
+              <div *ngIf="validaCampo('NOMBRE')">
+                <small style="color: red;">{{mensajeErrorCampo('NOMBRE')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="DESCRIPCION" class="col-sm-2 col-form-label">Descripción</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="DESCRIPCION" [class.is-invalid]="validaCampo('DESCRIPCION')"
+                formControlName="DESCRIPCION">
+              <div *ngIf="validaCampo('DESCRIPCION')">
+                <small style="color: red;">{{mensajeErrorCampo('DESCRIPCION')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="EXISTENCIA" class="col-sm-2 col-form-label">Existencia</label>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="EXISTENCIA" [class.is-invalid]="validaCampo('EXISTENCIA')"
+                formControlName="EXISTENCIA">
+              <div *ngIf="validaCampo('EXISTENCIA')">
+                <small style="color: red;">{{mensajeErrorCampo('EXISTENCIA')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="UNIDAD" class="col-sm-2 col-form-label">Unidad</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="UNIDAD" [class.is-invalid]="validaCampo('UNIDAD')"
+                formControlName="UNIDAD">
+              <div *ngIf="validaCampo('UNIDAD')">
+                <small style="color: red;">{{mensajeErrorCampo('UNIDAD')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="COSTO" class="col-sm-2 col-form-label">Costo</label>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="COSTO" [class.is-invalid]="validaCampo('COSTO')"
+                formControlName="COSTO">
+              <div *ngIf="validaCampo('COSTO')">
+                <small style="color: red;">{{mensajeErrorCampo('COSTO')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="DIASENTREGA" class="col-sm-2 col-form-label">Días entrega</label>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="DIASENTREGA" [class.is-invalid]="validaCampo('DIASENTREGA')"
+                formControlName="DIASENTREGA">
+              <div *ngIf="validaCampo('DIASENTREGA')">
+                <small style="color: red;">{{mensajeErrorCampo('DIASENTREGA')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="ESTATUS" class="col-sm-2 col-form-label">Estatus</label>
+            <div class="col-sm-2">
+              <!-- select -->
+              <select class="form-control" id="ESTATUS" [class.is-invalid]="validaCampo('ESTATUS')"
+                formControlName="ESTATUS">
+                <option [value]="item.IDTIPO" *ngFor="let item of catEstatus">{{item.NOMBRE}}</option>
+              </select>
+              <div *ngIf="validaCampo('ESTATUS')">
+                <small style="color: red;">{{mensajeErrorCampo('ESTATUS')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="loadIMG" class="col-sm-2 col-form-label">Imagen</label>
+            <div class="col-sm-2">
+              <input style="display: none" type="file" (change)="getFile($event.target.files)" #fileInput>
+              <button class="btn btn-outline-success" (click)="fileInput.click(); $event.preventDefault()">Selección archivo</button>
+            </div>
+
+            <img [src]="transform(imagen)" id="image" class="rounded float-left" alt="imagen."
+              style="height:300px;width:200px">
+
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <button type="submit" [disabled]="validaCaptura.invalid" class="btn btn-info">Guardar</button>
+          <button type="submit" (click)="goBack()" class="btn btn-default float-right">Salir</button>
+        </div>
+        <!-- /.card-footer -->
+      </form>
+    </div>
+    <!-- /.card -->
+
+  </div>
+</section>

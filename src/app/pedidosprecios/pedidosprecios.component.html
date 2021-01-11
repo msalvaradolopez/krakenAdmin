@@ -1,0 +1,28 @@
+<div class="list-group">
+    <a *ngFor = "let precio of precios" (click)= "precioDet(precio)" class="list-group-item list-group-item-action">
+        <div class="row">
+            <div class="col-lg-11 col-sm-6">
+                <strong><h5 class="mb-1">{{precio.NOMBRE}}</h5></strong>
+                <small><p class="mb-1">{{precio.DESCRIPCION}}</p></small>
+            </div>
+            <div class="col-lg-1 col-sm-2">
+                <img [src]=transform(precio.IMAGEN) class="product-image" alt="Product Image">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-2 col-sm-2">
+                <small>CATALOGO: {{precio.CATALOGO}}</small>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <small>UNIDAD: {{precio.UNIDAD}}</small>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <small>MX $ {{precio.PRECIO}}</small>
+            </div>
+            <div class="col-lg-2 col-sm-4">
+                <small>CATEGORIA : {{precio.CATEGORIA}}</small>
+            </div>
+            
+        </div>
+    </a>
+</div>

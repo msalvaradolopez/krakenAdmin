@@ -1,0 +1,33 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist" style="height: 60px;">
+    <a class="nav-link active text-center" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
+      aria-controls="nav-home" aria-selected="true"><i class="fas fa-store"></i>
+      
+        <p>Materiales</p>
+      
+    </a>
+    <a class="nav-link text-center" id="nav-pedido-tab" data-toggle="tab" href="#nav-pedido" role="tab"
+      aria-controls="nav-pedido" aria-selected="false"><i class="fas fa-clipboard-list"></i>
+      
+        <p>Pedido</p>
+      
+    </a>
+    <a class="nav-link text-center" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab"
+      aria-controls="nav-contact" aria-selected="false"><i class="fas fa-paste"></i>
+      
+        <p>Mis Pedidos</p>
+
+    </a>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+    <app-pedidosprecios></app-pedidosprecios>
+  </div>
+  <div class="tab-pane fade" id="nav-pedido" role="tabpanel" aria-labelledby="nav-pedido-tab">
+    <app-pedidodet></app-pedidodet>
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+    <app-pedidoscuenta></app-pedidoscuenta>
+  </div>
+</div>

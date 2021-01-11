@@ -1,0 +1,67 @@
+<style>
+    .miFuente {
+        font-size: calc(0.5em + 1vw);
+    }
+</style>
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item miFuente" *ngFor="let pedido of pedidoscuenta">
+        <div class="row">
+            <div class="col-4">
+                <strong>
+                    <p>#Pedido : {{pedido.IDREQUI}}</p>
+                </strong>
+            </div>
+            <div class="col-4">
+                <p class="mb-1"><span
+                        [ngClass]="pedido.ESTATUS == 'PENDIENTE' ? 'badge badge-pill badge-warning' : pedido.ESTATUS == 'CANCELADO' ? 'badge badge-pill badge-danger' : 'badge badge-pill badge-success'">{{pedido.ESTATUS}}</span>
+                </p>
+            </div>
+            <div class="col-4">
+                <p class="mb-1">TOTAL: MX {{pedido.TOTAL | currency}}</p>
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)="cancelaPedido(pedido)"
+                    *ngIf="pedido.ESTATUS == 'PENDIENTE'">Cancelar</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <small>Fecha: {{pedido.FECHA | date: "dd/MM/yyyy"}}</small>
+            </div>
+            <div class="col-8">
+                <small>Entregar En: {{pedido.ENTREGAREN}}</small>
+            </div>
+        </div>
+        <br />
+        <div *ngIf="pedido.OBSERVACIONES != '' && pedido.OBSERVACIONES != null" class="row">
+            <div class="col-8">
+                <small>Observaciones : {{pedido.OBSERVACIONES}}</small>
+            </div>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item" *ngFor="let pedidodet of pedido.REQUIDET">
+                <div class="row">
+                    <div class="col-12">
+                        <small>
+                            <p class="mb-1">{{pedidodet.NOMBRE}}</p>
+                        </small>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6 col-lg-3">
+                        <small>Ctd: {{pedidodet.CANTIDAD}} X : MX {{pedidodet.PRECIO | currency}}</small>
+                    </div>
+                    <div class="col-6 col-lg-2">
+                        <small>Importe : MX {{pedidodet.IMPORTE | currency}}</small>
+                    </div>
+                </div>
+                <div *ngIf="pedidodet.COMENTARIOS != '' && pedidodet.COMENTARIOS != null" class="row col-12">
+                    <small>Comentarios: {{pedidodet.COMENTARIOS}}</small>
+                </div>
+            </li>
+
+        </ul>
+
+    </li>
+</ul>

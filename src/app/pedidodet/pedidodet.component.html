@@ -1,0 +1,80 @@
+<style>
+    .input_css {
+      float: none;
+      width: 40px;
+      font: bold 20px Helvetica, sans-serif;
+      padding: 3px 0 0 0;
+      text-align: center;
+    }
+  
+    .btn-circle.btn-xl {
+      width: 70px;
+      height: 70px;
+      padding: 10px 16px;
+      border-radius: 35px;
+      font-size: 24px;
+      line-height: 1.33;
+    }
+  
+    .btn-circle {
+      width: 30px;
+      height: 30px;
+      padding: 6px 0px;
+      border-radius: 15px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.42857;
+    }
+  </style>
+
+<ul class="list-group list-group-flush">
+    <li class="list-group-item" *ngFor = "let item of partidas">
+        <div class="row">
+            <div class="col-lg-4 col-sm-4">
+                <strong><h5 class="mb-1">{{item.NOMBRE}}</h5></strong>
+                <small>{{item.DESCRIPCION}}</small>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <div class="btn btn-default btn-lg btn-flat">
+                    <button type="button" class="btn btn-primary btn-circle" (click)="addOrMinCtd(true, item)"><i
+                        class="fa fa-plus"></i>
+                    </button>
+                    <input type="number" class="input_css" [(ngModel)]="item.CANTIDAD">
+                    <button type="button" class="btn btn-primary btn-circle" (click)="addOrMinCtd(false, item)"><i
+                        class="fa fa-minus"></i>
+                    </button>
+                  </div>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <strong><h5 class="mb-1">MX {{item.PRECIO | currency}}</h5></strong>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <button type="button" class="btn btn-outline-danger btn-sm" (click)= "delPedidoDet(item)">Remover</button>
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <strong><h5 class="mb-1">TOTAL : MX  {{item.TOTAL | currency}}</h5></strong>
+            </div>
+        </div>
+    </li>
+    <li *ngIf="total != 0" class="list-group-item">
+        <div class="row">
+            <div class="col-lg-3 col-sm-3">
+                <strong><h5 class="mb-1">FECHA ENTREGA : {{pedido.FECHAENTREGA | date: 'dd/MM/yyyy'}}</h5></strong>
+            </div>
+            <div class="col-lg-3 col-sm-7">
+                
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <strong><h5 class="mb-1">TOTAL : MX {{total | currency}}</h5></strong>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-sm-10">
+            </div>
+            <div class="col-lg-2 col-sm-2">
+                <button type="button" class="btn btn-outline-success btn-lg" (click)= "generarPedido()">Generar pedido</button>
+            </div>
+        </div>
+    </li>
+    
+  </ul>

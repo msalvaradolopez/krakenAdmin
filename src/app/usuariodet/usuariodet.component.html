@@ -1,0 +1,146 @@
+<style>
+.uppercase{
+  text-transform: uppercase;
+}
+
+</style>
+
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Usuario detalle</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Usuario Clientes</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+  <div class="container-fluid">
+    <!-- Horizontal Form -->
+    <div class="card card-info">
+      <div class="card-header">
+        <h3 class="card-title">{{titulo}}</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form class="form-horizontal" [formGroup]="validaCaptura" (ngSubmit)="setUsuario()" autocomplete="off">
+        <div class="card-body">
+          <div class="form-group row">
+            <label for="IDUSUARIO" class="col-sm-2 col-form-label">Usuario</label>
+            <div class="col-sm-2">
+              <input type="text" [class.is-invalid]= "validaCampo('IDUSUARIO')" class="form-control uppercase" formControlName="IDUSUARIO"
+                id="IDUSUARIO">
+                <div *ngIf="validaCampo('IDUSUARIO')">
+                  <small style="color: red;">{{mensajeErrorCampo('IDUSUARIO')}}</small>
+                </div>
+            </div>
+
+          </div>
+          <div class="form-group row">
+            <label for="IDCLIENTE" class="col-sm-2 col-form-label">Cliente</label>
+            <div class="col-sm-4">
+              <!-- select -->
+              <select class="form-control" id="IDCLIENTE"  [class.is-invalid]= "validaCampo('IDCLIENTE')" formControlName="IDCLIENTE">
+                <option [value]="item.IDCLIENTE" *ngFor="let item of catClientes">{{item.NOMBRE}}</option>
+              </select>
+              <div *ngIf="validaCampo('IDCLIENTE')">
+                <small style="color: red;">{{mensajeErrorCampo('IDCLIENTE')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="NOMBRE" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="NOMBRE" [class.is-invalid]= "validaCampo('NOMBRE')" formControlName="NOMBRE">
+              <div *ngIf="validaCampo('NOMBRE')">
+                <small style="color: red;">{{mensajeErrorCampo('NOMBRE')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="EMAIL" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-4">
+              <input type="email" class="form-control" id="EMAIL" [class.is-invalid]= "validaCampo('EMAIL')" formControlName="EMAIL">
+              <div *ngIf="validaCampo('EMAIL')">
+                <small style="color: red;">{{mensajeErrorCampo('EMAIL')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="TELEFONO" class="col-sm-2 col-form-label">Teléfono</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="TELEFONO" [class.is-invalid]= "validaCampo('TELEFONO')" formControlName="TELEFONO">
+              <div *ngIf="validaCampo('TELEFONO')">
+                <small style="color: red;">{{mensajeErrorCampo('TELEFONO')}}</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="ROL" class="col-sm-2 col-form-label">Rol</label>
+            <div class="col-sm-2">
+              <!-- select -->
+              <select class="form-control" id="ROL" [class.is-invalid]= "validaCampo('ROL')" formControlName="ROL">
+                <option [value]="item.IDTIPO" *ngFor="let item of catRoles">{{item.NOMBRE}}</option>
+              </select>
+              <div *ngIf="validaCampo('ROL')">
+                <small style="color: red;">{{mensajeErrorCampo('ROL')}}</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="PASSW" class="col-sm-2 col-form-label">Password</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="PASSW" [class.is-invalid]= "validaCampo('PASSW')" formControlName="PASSW">
+              <div *ngIf="validaCampo('PASSW')">
+                <small style="color: red;">{{mensajeErrorCampo('PASSW')}}</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="IMPORTEMAX" class="col-sm-2 col-form-label">Importe Max Autoriza</label>
+            <div class="col-sm-2">
+              <input type="number" class="form-control" id="IMPORTEMAX" [class.is-invalid]= "validaCampo('IMPORTEMAX')" formControlName="IMPORTEMAX">
+              <div *ngIf="validaCampo('IMPORTEMAX')">
+                <small style="color: red;">{{mensajeErrorCampo('IMPORTEMAX')}}</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="ESTATUS" class="col-sm-2 col-form-label">Estatus</label>
+            <div class="col-sm-2">
+              <!-- select -->
+              <select class="form-control" id="ESTATUS" [class.is-invalid]= "validaCampo('ESTATUS')" formControlName="ESTATUS">
+                <option [value]="item.IDTIPO" *ngFor="let item of catEstatus">{{item.NOMBRE}}</option>
+              </select>
+              <div *ngIf="validaCampo('ESTATUS')">
+                <small style="color: red;">{{mensajeErrorCampo('ESTATUS')}}</small>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <button type="submit" [disabled]="validaCaptura.invalid" class="btn btn-info">Guardar</button>
+          <button type="submit" (click)="goBack()" class="btn btn-default float-right">Salir</button>
+        </div>
+        <!-- /.card-footer -->
+      </form>
+    </div>
+    <!-- /.card -->
+
+  </div>
+</section>

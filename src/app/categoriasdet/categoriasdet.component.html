@@ -1,0 +1,62 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+  <div class="container-fluid">
+    <div class="row mb-2">
+      <div class="col-sm-6">
+        <h1 class="m-0 text-dark">Cetegoría detalle</h1>
+      </div><!-- /.col -->
+      <div class="col-sm-6">
+        <ol class="breadcrumb float-sm-right">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item active">Detalle Categoría</li>
+        </ol>
+      </div><!-- /.col -->
+    </div><!-- /.row -->
+  </div><!-- /.container-fluid -->
+</div>
+<!-- /.content-header -->
+
+<section class="content">
+  <div class="container-fluid">
+    <!-- Horizontal Form -->
+    <div class="card card-info">
+      <div class="card-header">
+        <h3 class="card-title">{{titulo}}</h3>
+      </div>
+      <!-- /.card-header -->
+      <!-- form start -->
+      <form class="form-horizontal"  [formGroup]="validaCaptura" (ngSubmit)="setCategoria()" autocomplete="off">
+        <div class="card-body">
+          <div class="form-group row">
+            <label for="IDCATEGORIA" class="col-sm-2 col-form-label">Clave</label>
+            <div class="col-sm-2">
+              <input type="text" class="form-control" id="IDCATEGORIA" [class.is-invalid]="validaCampo('IDCATEGORIA')"
+                formControlName="IDCATEGORIA">
+              <div *ngIf="validaCampo('IDCATEGORIA')">
+                <small style="color: red;">{{mensajeErrorCampo('IDCATEGORIA')}}</small>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="NOMBRE" class="col-sm-2 col-form-label">Nombre</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" id="NOMBRE" [class.is-invalid]="validaCampo('NOMBRE')"
+              formControlName="NOMBRE">
+            <div *ngIf="validaCampo('NOMBRE')">
+              <small style="color: red;">{{mensajeErrorCampo('NOMBRE')}}</small>
+            </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+          <button type="submit" [disabled]="validaCaptura.invalid" class="btn btn-info">Guardar</button>
+          <button type="submit" (click)="goBack()" class="btn btn-default float-right">Salir</button>
+        </div>
+        <!-- /.card-footer -->
+      </form>
+    </div>
+    <!-- /.card -->
+
+  </div>
+</section>
